@@ -25,7 +25,7 @@
 
 ## 📖 Overview
 
-A modular API automation framework built in **Pyton** with **Pytest.**
+A modular API automation framework built in **Python** with **Pytest.**
 The framework covers CRUD operations for the following REST services:
 - Users
 - Products
@@ -57,9 +57,9 @@ Both positive and negative scenarios are automated, including validation and bou
 - **JSON Schema Validation:** API response validation using `jsonschema.`
 - **Custom Test Markers:** Test categorization and selective execution using custom pytest markers.
 - **Test Reporting:** Detailed test reports generated with `pytest-html.`
-- **Detailed API Logging:** API request/response logging using Python's built-in `logging` module
-- Test execution control through **Pytest parameters**
-- **GitHub Actions CI:** Two workflows for automated test execution — one manually triggered and one triggered on Pull Requests
+- **Detailed API Logging:** API request/response logging using Python's built-in `logging` module.
+- Test execution control through **Pytest parameters.**
+- **GitHub Actions CI:** Two workflows for automated test execution (one manually triggered and one triggered on Pull Requests).
 
 ---
 
@@ -88,19 +88,22 @@ maintainability, reusability, and separation of concerns.
 
 ### Run All Tests
 
-```bash
-# All Tests (40 tests)
-...
+```
+# Run all tests without generating report(26 tests)
+python -m pytest
+
+# Run all tests with HTML report, logging, and custom styling (26 tests)
+python -m pytest --html=reports/all_tests.html --self-contained-html --css=report_style.css -s
 ```
 
 ### Run Specific Test Suite 
 
 ```bash
-# Smoke Tests (8 tests)
-...
+# Run smoke tests with HTML report, logging, and custom styling (10 tests)
+python -m pytest -m smoke --html=reports/smoke.html --self-contained-html --css=report_style.css -s
 
-# Test Service: Product service (20 tests) 
-...
+# Run product module tests with HTML report, logging, and custom styling (13 tests)
+python -m pytest -m product --html=reports/product.html --self-contained-html --css=report_style.css -s
 ```
 
 ---
