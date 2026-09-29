@@ -1,10 +1,12 @@
 <a id="top"></a>
 # Project 10 – REST API Automation Framework 
 
-![JavaScript](https://img.shields.io/badge/JavaScript-ES2022%2B-yellow)
-![Node.js](https://img.shields.io/badge/Node.js-18%2B-green)
-![Playwright](https://img.shields.io/badge/Playwright-API%20Testing-2EAD33)
-![SOAP](https://img.shields.io/badge/SOAP-API%20Testing-005571)
+![Python](https://img.shields.io/badge/Python-3.12%2B-blue)
+![Pytest](https://img.shields.io/badge/Pytest-9.x-0A9EDC)
+![Requests](https://img.shields.io/badge/Requests-HTTP%20Client-2CA5E0)
+![REST API](https://img.shields.io/badge/REST-API%20Testing-005571)
+![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-CI-2088FF)
+
 
 
 > **Note:** This project is part of my personal QA Automation portfolio.
@@ -23,8 +25,8 @@
 
 ## 📖 Overview
 
-A modular SOAP API automation framework built with JavaScript, Node.js, and Playwright.
-The framework covers CRUD operations for the following SOAP services:
+A modular API automation framework built in **Pyton** with **Pytest.**
+The framework covers CRUD operations for the following REST services:
 - Users
 - Products
 
@@ -37,12 +39,14 @@ Both positive and negative scenarios are automated, including validation and bou
 
 | Technology | Purpose |
 |------------|---------|
-| JavaScript | Scripting language used for test implementation |
-| Node.js | JavaScript runtime environment |
-| Playwright | API automation, HTTP request handling, test execution and assertions |
-| fast-xml-parser | XML response parsing and deserialization |
-| SOAP | API protocol under test |
-| XML | Request payload templates and response format |
+| Python | Programming language used for test implementation |
+| Pytest | Test execution, fixtures, assertions, and test organization |
+| Requests | HTTP client used for REST API communication |
+| jsonschema | JSON response schema validation |
+| pytest-html | HTML test report generation |
+| pytest-check | Multiple assertions within a single test |
+| Python logging | Structured API request/response and test execution logging |
+| GitHub Actions | CI workflow for automated test execution |
 
 ---
 
@@ -53,6 +57,7 @@ Both positive and negative scenarios are automated, including validation and bou
 - **JSON Schema Validation:** API response validation using `jsonschema.`
 - **Custom Test Markers:** Test categorization and selective execution using custom pytest markers.
 - **Test Reporting:** Detailed test reports generated with `pytest-html.`
+- **Detailed API Logging:** API request/response logging using Python's built-in `logging` module
 - Test execution control through **Pytest parameters**
 - **GitHub Actions CI:** Two workflows for automated test execution — one manually triggered and one triggered on Pull Requests
 
@@ -64,16 +69,18 @@ Both positive and negative scenarios are automated, including validation and bou
 The framework is organized into dedicated layers, each with a clear responsibility to improve
 maintainability, reusability, and separation of concerns.
 
-
 | Component | Purpose |
-|-------------------|---------|
-| Service | Encapsulates API endpoints and HTTP operations for each resource |
-| Payload | Provides reusable SOAP request templates with placeholders |
-| Fixtures | Provides ready-to-use payloads passed as parameters directly into each test|
-| Test Data | Contains scenario-specific input data used to populate request templates |
-| Expected | Centralizes expected status codes, headers, response values and validation messages |
-| Tests | Contains test scenarios organized by API resource and operation |
-| Utils | Provides generic methods for XML parsing, placeholder replacement and XML field manipulation |
+|-----------|---------|
+| `services` | Encapsulates REST API endpoints and HTTP operations |
+| `base_service` | Provides shared HTTP request handling and API logging |
+| `fixtures` | Provides reusable test setup, payloads, schemas, and service instances |
+| `test_data` | Contains request payloads and expected JSON response schemas |
+| `tests` | Contains API test scenarios organized by resource and operation |
+| `conftest.py` | Centralizes Pytest fixtures, test hooks, reporting, and test execution logging |
+| `pytest.ini` | Contains Pytest configuration and custom test markers |
+| `reports` | Stores generated HTML test reports |
+| `.github/workflows` | Contains GitHub Actions CI workflows |
+
 
 ---
 
@@ -83,17 +90,17 @@ maintainability, reusability, and separation of concerns.
 
 ```bash
 # All Tests (40 tests)
-npx playwright test
+...
 ```
 
 ### Run Specific Test Suite 
 
 ```bash
 # Smoke Tests (8 tests)
-npx playwright test --grep '@smoke'
+...
 
 # Test Service: Product service (20 tests) 
-npx playwright test --grep '@product'
+...
 ```
 
 ---
@@ -102,7 +109,7 @@ npx playwright test --grep '@product'
 
 ### Reports
 
-Test execution reports are generated using Extent Reports and located in the `reports/` directory.
+Test execution **reports** are generated using `pytest-html` and located in the `reports/` directory.
 
 <details>
 <summary>📊 <strong>Report Preview</strong></summary>
@@ -115,14 +122,14 @@ Test execution reports are generated using Extent Reports and located in the `re
 
 ### Logs
 
-Execution logs are generated using Logback and SLF4J and located in the `logs/` directory.
+**Detailed API execution logs** are generated using Python's built-in logging module.
 
 <details>
 <summary>📝 <strong>Logs Preview</strong></summary>
 
 <br>
 
-![Logs Preview](docs/loggs-preview.png)
+![Logs Preview](docs/loggs-preview.jpg)
 
 </details>
 
@@ -131,7 +138,7 @@ Execution logs are generated using Logback and SLF4J and located in the `logs/` 
 ## Conclusion
 
 The main focus of this project was to demonstrate a solid understanding of core API Automation concepts, particularly 
-SOAP API testing, and their practical application within a structured and configurable framework.
+REST API testing, and their practical application within a structured and configurable framework, using Python and Pytest.
 
 **Author:** [DoruSQA](https://github.com/DoruSQA) | [LinkedIn](https://www.linkedin.com/in/sava-doru/)
 <p align="right"><a href="#top">Back to Top</a></p>
