@@ -1,10 +1,10 @@
-name: API Module Testing
+name: API Module Testing2
 
 on:
   workflow_dispatch:
     inputs:
       testSuite:
-        description: 'Select the API test suite to execute'
+        description: "Select the API test suite to execute"
         required: true
         type: choice
         options:
@@ -22,8 +22,8 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
-          cache: 'pip'
+          python-version: "3.12"
+          cache: "pip"
 
       - name: Install dependencies
         run: |
@@ -32,11 +32,13 @@ jobs:
 
       - name: Run ${{ inputs.testSuite }} Tests
         run: |
-          python -m pytest src \
+          cd src
+          mkdir -p ../reports
+          python -m pytest \
             -m "${{ inputs.testSuite }}" \
-            --html="reports/${{ inputs.testSuite }}.html" \
+            --html="../reports/${{ inputs.testSuite }}.html" \
             --self-contained-html \
-            --css=src/report_style.css
+            --css=report_style.css
 
       - name: Upload HTML Report
         if: always()
