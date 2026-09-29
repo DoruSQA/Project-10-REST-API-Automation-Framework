@@ -1,0 +1,687 @@
+
+:root {
+    --bg: #070707;
+    --bg-soft: #0b0b0b;
+    --panel: #101010;
+    --panel-hover: #171717;
+
+    --border: #252525;
+    --border-light: #343434;
+
+    --text: #f2f2f2;
+    --text-secondary: #b8b8b8;
+    --text-muted: #777777;
+
+    --accent: #5b9cff;
+    --accent-soft: rgba(91, 156, 255, 0.12);
+
+    --green: #39d98a;
+    --green-soft: rgba(57, 217, 138, 0.12);
+
+    --red: #ff5f6d;
+    --red-soft: rgba(255, 95, 109, 0.12);
+
+    --yellow: #e4c65a;
+    --yellow-soft: rgba(228, 198, 90, 0.12);
+}
+
+
+/* =========================================================
+   GLOBAL
+   ========================================================= */
+
+html,
+body {
+    margin: 0 !important;
+    padding: 0 !important;
+    min-height: 100%;
+    background:
+        radial-gradient(
+            circle at 85% 0%,
+            rgba(91, 156, 255, 0.045),
+            transparent 28%
+        ),
+        linear-gradient(
+            135deg,
+            #060606 0%,
+            #0a0a0a 50%,
+            #080808 100%
+        ) !important;
+    color: var(--text) !important;
+    font-family: "Segoe UI", Inter, Arial, sans-serif !important;
+    font-size: 14px !important;
+}
+
+
+/* =========================================================
+   MAIN LAYOUT
+   ========================================================= */
+
+body {
+    box-sizing: border-box;
+}
+
+#title,
+body > h1 {
+    color: #f5f5f5 !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.35px !important;
+    margin: 0 0 8px !important;
+}
+
+body > p {
+    color: var(--text-muted) !important;
+}
+
+#header {
+    background: linear-gradient(180deg, #101010 0%, #0b0b0b 100%) !important;
+    color: var(--text) !important;
+    border-bottom: 1px solid var(--border) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35) !important;
+    padding: 18px 22px !important;
+}
+
+#header h1,
+#header h1 *,
+#header p,
+#header p * {
+    color: inherit !important;
+}
+
+
+/* =========================================================
+   SECTION HEADINGS
+   ========================================================= */
+
+h2,
+h3,
+h4 {
+    color: #eeeeee !important;
+    font-weight: 650 !important;
+    letter-spacing: -0.2px !important;
+    text-shadow: none !important;
+}
+
+#environment-header h2,
+.summary h2,
+#summary h2,
+#results h2 {
+    color: #f0f0f0 !important;
+    margin: 0 0 14px !important;
+    padding: 4px 0 !important;
+    font-size: 18px !important;
+}
+
+#environment-header h2::before,
+.summary h2::before,
+#summary h2::before,
+#results h2::before {
+    content: "";
+    display: inline-block;
+    width: 3px;
+    height: 16px;
+    margin-right: 9px;
+    vertical-align: -2px;
+    background: var(--accent);
+    border-radius: 2px;
+    opacity: 0.8;
+}
+
+
+/* =========================================================
+   ENVIRONMENT
+   pytest-html 4.x uses #environment-header + #environment
+   ========================================================= */
+
+#environment-header {
+    background: linear-gradient(145deg, #111111, #0d0d0d) !important;
+    border: 1px solid var(--border) !important;
+    border-bottom: 0 !important;
+    border-radius: 8px 8px 0 0 !important;
+    margin-top: 18px !important;
+    padding: 12px 14px 0 !important;
+}
+
+#environment {
+    width: 100% !important;
+    background: #0e0e0e !important;
+    color: var(--text) !important;
+    border: 1px solid var(--border) !important;
+    border-top: 0 !important;
+    border-radius: 0 0 8px 8px !important;
+    overflow: hidden !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25) !important;
+    margin-bottom: 20px !important;
+}
+
+#environment th {
+    background: #171717 !important;
+    color: #d8d8d8 !important;
+}
+
+#environment td {
+    background: #101010 !important;
+    color: #bdbdbd !important;
+}
+
+#environment th,
+#environment td {
+    border-bottom: 1px solid #202020 !important;
+    padding: 9px 10px !important;
+}
+
+
+/* =========================================================
+   SUMMARY
+   This is the important fix for the black/invisible text.
+   pytest-html 4.x uses .summary / .summary__data.
+   ========================================================= */
+
+.summary,
+#summary {
+    display: block !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    background: linear-gradient(145deg, #111111, #0d0d0d) !important;
+    color: var(--text) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 8px !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25) !important;
+    margin: 0 0 20px !important;
+    padding: 14px !important;
+}
+
+.summary__data {
+    color: var(--text) !important;
+}
+
+.summary p,
+.summary span,
+.summary label,
+.summary .run-count,
+.summary .filter,
+.summary__data p,
+.summary__data span,
+.summary__data label {
+    color: var(--text-secondary) !important;
+}
+
+.summary .run-count {
+    color: #eeeeee !important;
+    font-size: 14px !important;
+    margin: 0 0 8px !important;
+}
+
+.summary .filter {
+    color: var(--text-muted) !important;
+    margin: 0 0 12px !important;
+}
+
+
+/* Summary controls */
+
+.summary .controls {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 16px !important;
+    flex-wrap: wrap !important;
+    margin-top: 10px !important;
+}
+
+.summary .filters {
+    color: var(--text-secondary) !important;
+    display: flex !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    gap: 4px !important;
+}
+
+.summary .filters span {
+    font-weight: 600 !important;
+}
+
+.summary .collapse {
+    margin-left: auto !important;
+    white-space: nowrap !important;
+}
+
+
+/* Summary status colours */
+
+.summary .filters span,
+#summary .filters span {
+    display: inline-block !important;
+    padding: 5px 9px !important;
+    margin: 2px 3px 2px 0 !important;
+    border-radius: 5px !important;
+    border: 1px solid #2b2b2b !important;
+    background: #151515 !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    line-height: 1.2 !important;
+}
+
+/* Passed */
+.summary .filters span.passed,
+#summary .filters span.passed {
+    color: #8ff0b5 !important;
+    background: #123b27 !important;
+    border-color: #245c3e !important;
+}
+
+/* Failed / errors */
+.summary .filters span.failed,
+#summary .filters span.failed,
+.summary .filters span.error,
+#summary .filters span.error {
+    color: #ff9aa3 !important;
+    background: #35171c !important;
+    border-color: #643039 !important;
+}
+
+/* Skipped */
+.summary .filters span.skipped,
+#summary .filters span.skipped {
+    color: #ead36a !important;
+    background: #322b14 !important;
+    border-color: #5b501f !important;
+}
+
+/* Other pytest outcomes */
+.summary .filters span.xfailed,
+.summary .filters span.xpassed,
+.summary .filters span.rerun,
+#summary .filters span.xfailed,
+#summary .filters span.xpassed,
+#summary .filters span.rerun {
+    color: #bdbdbd !important;
+    background: #151515 !important;
+    border-color: #303030 !important;
+}
+
+
+/* =========================================================
+   RESULTS
+   ========================================================= */
+
+#results {
+    box-sizing: border-box !important;
+    width: 100% !important;
+    background: linear-gradient(145deg, #111111, #0d0d0d) !important;
+    color: var(--text) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 8px !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25) !important;
+    padding: 14px !important;
+    margin-bottom: 20px !important;
+}
+
+
+/* =========================================================
+   RESULTS TABLE
+   ========================================================= */
+
+#results-table,
+table {
+    width: 100% !important;
+    background: #0e0e0e !important;
+    color: var(--text) !important;
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 7px !important;
+    overflow: hidden !important;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25) !important;
+    margin-top: 8px !important;
+}
+
+#results-table th,
+th {
+    background: #171717 !important;
+    color: #d8d8d8 !important;
+    border-bottom: 1px solid var(--border-light) !important;
+    font-weight: 600 !important;
+    padding: 9px 10px !important;
+    text-shadow: none !important;
+}
+
+#results-table td,
+td {
+    background: #101010 !important;
+    color: #d2d2d2 !important;
+    border-bottom: 1px solid #1e1e1e !important;
+    padding: 8px 10px !important;
+}
+
+#results-table tr:hover td {
+    background: #181818 !important;
+    transition: background 0.12s ease;
+}
+
+
+/* =========================================================
+   TEST RESULT STATES
+   pytest-html 4.x puts the outcome class on <tbody>
+   (e.g. <tbody class="results-table-row passed">).
+   The Result cell itself is .col-result.
+   ========================================================= */
+
+#results-table tbody.passed > .collapsible > .col-result {
+    background: linear-gradient(90deg, #174d32, #123b27) !important;
+    color: #8ff0b5 !important;
+    font-weight: 700 !important;
+    border-left: 3px solid var(--green) !important;
+}
+
+#results-table tbody.passed > .collapsible:hover > .col-result {
+    background: linear-gradient(90deg, #1d5c3c, #17452e) !important;
+}
+
+#results-table tbody.failed > .collapsible > .col-result {
+    background: linear-gradient(90deg, #4a2027, #35171c) !important;
+    color: #ff9aa3 !important;
+    font-weight: 700 !important;
+    border-left: 3px solid var(--red) !important;
+}
+
+#results-table tbody.failed > .collapsible:hover > .col-result {
+    background: linear-gradient(90deg, #5b2831, #401b21) !important;
+}
+
+#results-table tbody.skipped > .collapsible > .col-result,
+#results-table tbody.xfailed > .collapsible > .col-result,
+#results-table tbody.rerun > .collapsible > .col-result {
+    background: linear-gradient(90deg, #453b19, #322b14) !important;
+    color: #ead36a !important;
+    font-weight: 700 !important;
+    border-left: 3px solid var(--yellow) !important;
+}
+
+#results-table tbody.error > .collapsible > .col-result,
+#results-table tbody.xpassed > .collapsible > .col-result {
+    background: linear-gradient(90deg, #4a2027, #35171c) !important;
+    color: #ff9aa3 !important;
+    font-weight: 700 !important;
+    border-left: 3px solid var(--red) !important;
+}
+
+/* Keep the rest of the row dark */
+#results-table tbody > .collapsible > td:not(.col-result) {
+    background: #101010 !important;
+    color: #d2d2d2 !important;
+}
+
+#results-table tbody > .collapsible:hover > td:not(.col-result) {
+    background: #181818 !important;
+}
+
+/* Native pytest-html collapse indicator */
+#results-table .col-result:hover::after {
+    color: #8f8f8f !important;
+}
+
+#results-table .col-result.collapsed:hover::after {
+    color: #bdbdbd !important;
+}
+
+/* =========================================================
+   LINKS
+   ========================================================= */
+
+a {
+    color: #cfcfcf !important;
+    text-decoration: none !important;
+    transition: color 0.15s ease;
+}
+
+a:hover {
+    color: #ffffff !important;
+}
+
+#results-table td a,
+td a {
+    color: #d7d7d7 !important;
+}
+
+#results-table td a:hover,
+td a:hover {
+    color: #ffffff !important;
+}
+
+
+/* =========================================================
+   COLLAPSIBLE TEST DETAILS
+   ========================================================= */
+
+.collapsible {
+    background: #141414 !important;
+    color: #d5d5d5 !important;
+    border-color: #292929 !important;
+}
+
+.collapsible:hover {
+    background: #1b1b1b !important;
+    border-color: #3a3a3a !important;
+}
+
+
+/* =========================================================
+   SHOW / HIDE DETAILS BUTTONS
+   ========================================================= */
+
+#show_all_details,
+#hide_all_details {
+    background: #151515 !important;
+    color: #cfcfcf !important;
+    border: 1px solid #303030 !important;
+    border-radius: 5px !important;
+    padding: 6px 10px !important;
+    box-shadow: none !important;
+    cursor: pointer !important;
+}
+
+#show_all_details:hover,
+#hide_all_details:hover {
+    background: #202020 !important;
+    color: #ffffff !important;
+    border-color: #444444 !important;
+}
+
+
+/* =========================================================
+   FILTER CHECKBOXES
+   ========================================================= */
+
+input[type="checkbox"] {
+    accent-color: var(--accent) !important;
+}
+
+input,
+select {
+    background: #101010 !important;
+    color: #dddddd !important;
+    border: 1px solid #2a2a2a !important;
+    border-radius: 5px !important;
+}
+
+input:focus,
+select:focus {
+    border-color: #555555 !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+button {
+    background: #151515 !important;
+    color: #d0d0d0 !important;
+    border: 1px solid #303030 !important;
+    border-radius: 5px !important;
+    padding: 5px 10px !important;
+    box-shadow: none !important;
+}
+
+button:hover {
+    background: #202020 !important;
+    color: #ffffff !important;
+    border-color: #444444 !important;
+}
+
+
+/* =========================================================
+   CODE / LOGS
+   ========================================================= */
+
+pre,
+pre code,
+.log {
+    background: #090909 !important;
+    color: #d0d0d0 !important;
+    border-color: #222222 !important;
+    border-radius: 6px !important;
+}
+
+.log {
+    padding: 10px !important;
+}
+
+
+/* =========================================================
+   MUTED
+   ========================================================= */
+
+.text-muted,
+.muted {
+    color: var(--text-muted) !important;
+}
+
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #080808;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #292929;
+    border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #3a3a3a;
+}
+
+
+/* =========================================================
+   HIDE LINKS COLUMN
+   Keep only: Result | Test | Duration
+   pytest-html generates the Links column as the last
+   header cell and test cells use .col-links.
+   ========================================================= */
+
+#results-table thead th:last-child {
+    display: none !important;
+}
+
+#results-table td.col-links {
+    display: none !important;
+}
+
+/* Give the remaining columns a cleaner proportion */
+#results-table th:first-child,
+#results-table td.col-result {
+    width: 125px !important;
+}
+
+#results-table th:nth-child(2) {
+    width: auto !important;
+}
+
+#results-table th:nth-child(3),
+#results-table td.col-duration {
+    width: 110px !important;
+    white-space: nowrap !important;
+}
+
+
+/* =========================================================
+   SUMMARY - FINAL POLISH
+   ========================================================= */
+
+.summary .collapse {
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+}
+
+.summary .collapse button {
+    min-height: 30px !important;
+    padding: 6px 11px !important;
+}
+
+.summary .collapse button:first-child {
+    color: #cfcfcf !important;
+}
+
+.summary .collapse button:last-child {
+    color: #cfcfcf !important;
+}
+
+/* =========================================================
+   SUMMARY - KEEP ONLY FAILED / PASSED / SKIPPED
+   Hide "Show all details" / "Hide all details"
+   Hide filter checkboxes
+   ========================================================= */
+
+/* Hide Show all details + Hide all details */
+.summary .collapse,
+#summary .collapse {
+    display: none !important;
+}
+
+/* Keep only Passed / Failed / Skipped filters */
+.summary .filters > span:not(.passed):not(.failed):not(.skipped),
+#summary .filters > span:not(.passed):not(.failed):not(.skipped) {
+    display: none !important;
+}
+
+/* Hide ONLY the checkboxes inside Summary filters */
+.summary .filters input[type="checkbox"],
+#summary .filters input[type="checkbox"] {
+    display: none !important;
+}
+
+/* Keep the three remaining filters aligned to the left */
+.summary .filters,
+#summary .filters {
+    justify-content: flex-start !important;
+    margin-left: 0 !important;
+}
+
+/* Remove the extra space previously reserved for the buttons */
+.summary .controls,
+#summary .controls {
+    justify-content: flex-start !important;
+}
+
+/* =========================================================
+   ENVIRONMENT - HIDE JAVA_HOME ONLY
+   ========================================================= */
+
+#environment tr:last-child {
+    display: none !important;
+}
+
+

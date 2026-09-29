@@ -1,0 +1,50 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["success", "data", "pagination"],
+  "properties": {
+    "success": {
+      "type": "boolean"
+    },
+    "data": {
+      "type": "array"
+    },
+    "pagination": {
+      "type": "object",
+      "required": [
+        "total",
+        "page",
+        "limit",
+        "pages",
+        "hasNext",
+        "hasPrev"
+      ],
+      "properties": {
+        "total": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "page": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "limit": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "pages": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "hasNext": {
+          "type": "boolean"
+        },
+        "hasPrev": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

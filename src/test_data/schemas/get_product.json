@@ -1,0 +1,47 @@
+{
+  "type": "object",
+  "required": [
+    "success",
+    "data"
+  ],
+  "properties": {
+    "success": {
+      "type": "boolean"
+    },
+    "data": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "price",
+        "description",
+        "stock",
+        "category",
+        "created_at"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "price": {
+          "type": "number"
+        },
+        "description": {
+          "type": "string"
+        },
+        "stock": {
+          "type": "integer"
+        },
+        "category": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
