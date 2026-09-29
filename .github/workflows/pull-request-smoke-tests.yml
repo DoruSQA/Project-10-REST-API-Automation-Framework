@@ -16,20 +16,21 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
-          cache: 'pip'
+          python-version: "3.12"
+          cache: "pip"
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          pip install -r src/requirements.txt
 
       - name: Run Smoke Tests
         run: |
-          mkdir -p reports
+          cd src
+          mkdir -p ../reports
           python -m pytest \
             -m smoke \
-            --html=reports/smoke_tests.html \
+            --html="../reports/smoke_tests.html" \
             --self-contained-html \
             --css=report_style.css
 

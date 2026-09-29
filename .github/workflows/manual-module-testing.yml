@@ -1,4 +1,4 @@
-name: API Module Testing2
+name: API Module Testing
 
 on:
   workflow_dispatch:
