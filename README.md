@@ -5,7 +5,7 @@
 ![Node.js](https://img.shields.io/badge/Node.js-18%2B-green)
 ![Playwright](https://img.shields.io/badge/Playwright-API%20Testing-2EAD33)
 ![SOAP](https://img.shields.io/badge/SOAP-API%20Testing-005571)
-![CI](https://github.com/DoruSQA/Project-6-SOAP-API-Automation-Framework/actions/workflows/manual-module-testing.yml/badge.svg)
+
 
 > **Note:** This project is part of my personal QA Automation portfolio.
 
