@@ -5,7 +5,7 @@
 ![Pytest](https://img.shields.io/badge/Pytest-9.x-0A9EDC)
 ![Requests](https://img.shields.io/badge/Requests-HTTP%20Client-2CA5E0)
 ![REST API](https://img.shields.io/badge/REST-API%20Testing-005571)
-![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-CI-2088FF)
+![CI](https://github.com/DoruSQA/Project-2-Banking-Web-UI-Automation-Framework/actions/workflows/manual-module-testing.yml/badge.svg)
 
 
 
