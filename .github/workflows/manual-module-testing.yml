@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       testSuite:
-        description: "Select the API test suite to execute"
+        description: 'Select the API test suite to execute'
         required: true
         type: choice
         options:
@@ -16,5 +16,32 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Test workflow
-        run: echo "API workflow detected!"
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r src/requirements.txt
+
+      - name: Run ${{ inputs.testSuite }} Tests
+        run: |
+          python -m pytest src \
+            -m "${{ inputs.testSuite }}" \
+            --html="reports/${{ inputs.testSuite }}.html" \
+            --self-contained-html \
+            --css=src/report_style.css
+
+      - name: Upload HTML Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pytest-report-${{ inputs.testSuite }}
+          path: reports/
+          if-no-files-found: warn
