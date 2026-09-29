@@ -88,7 +88,7 @@ maintainability, reusability, and separation of concerns.
 
 ### Run All Tests
 
-```
+```bash
 # Run all tests without generating report(26 tests)
 python -m pytest
 
