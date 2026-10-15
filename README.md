@@ -30,8 +30,9 @@ The framework covers CRUD operations for the following REST services:
 - Users
 - Products
 
-Both positive and negative scenarios are automated, including validation and boundary testing.
+Both **positive** and **negative scenarios** are automated, including response verification and boundary testing.
 
+Application under test: [TotalShiftLeft Demo](https://demo.totalshiftleft.ai/ui) 
 ---
 
 <a id="tech-stack"></a>
